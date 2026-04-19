@@ -1,0 +1,152 @@
+[gd_scene format=3 uid="uid://bj6880xopqexr"]
+
+[ext_resource type="Script" uid="uid://bhsxmbton5pxr" path="res://Scripts/main.gd" id="1_jjgbg"]
+[ext_resource type="Texture2D" uid="uid://c3shqi334cvvf" path="res://Assets/Chars/glow.png" id="2_fdnlq"]
+[ext_resource type="PackedScene" uid="uid://8dl5x4oy7fmm" path="res://Scenes/player.tscn" id="3_8gbba"]
+[ext_resource type="Texture2D" uid="uid://cfb5m2pypprgg" path="res://Assets/Room2/floor.png" id="5_344ge"]
+[ext_resource type="Texture2D" uid="uid://cim4hg2urqgxa" path="res://Assets/Room2/board.png" id="5_d1ilt"]
+[ext_resource type="Texture2D" uid="uid://bw14ggoy2ng3m" path="res://Assets/Room2/painting2.png" id="6_6iyac"]
+[ext_resource type="Texture2D" uid="uid://dyq7ysiccmsws" path="res://Assets/Room2/wall.png" id="6_ynf5e"]
+[ext_resource type="Texture2D" uid="uid://c5hnblh32815s" path="res://Assets/Room2/cabinet.png" id="7_fdnlq"]
+[ext_resource type="Texture2D" uid="uid://bh4eyby4qi7q0" path="res://Assets/Room2/door.png" id="7_hptm8"]
+[ext_resource type="Texture2D" uid="uid://hmxcok5rp0iw" path="res://Assets/Room2/painting1.png" id="7_jkdf5"]
+[ext_resource type="Texture2D" uid="uid://cng6ol7llefx2" path="res://Assets/Room2/shelf.png" id="8_jkdf5"]
+[ext_resource type="Texture2D" uid="uid://24p3m0hvhkqg" path="res://Assets/Room2/book.png" id="9_wsu2k"]
+[ext_resource type="Texture2D" uid="uid://bob5e0rkppum7" path="res://Assets/Room2/skeleton.png" id="10_k12tt"]
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_fdnlq"]
+polygon = PackedVector2Array(-1399.3334, -693.3334, -54, -685.6667, -94.66667, -598.3334, -325.33334, -628, -496, -609, -692.3334, -541.6667, -848, -475.33337, -1019.6667, -419.33337, -1172.6667, -382, -1413.3334, -332.33334)
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_jkdf5"]
+polygon = PackedVector2Array(705.6667, -596, 323.33334, -606.6667, -53, -581.6667, -31.666672, -693.3334, 1507, -688.6667, 1508, -438.6667, 1094, -496, 815.3334, -544)
+
+[node name="Main" type="Node2D" unique_id=1007546812]
+script = ExtResource("1_jjgbg")
+
+[node name="PointLight2D2" type="PointLight2D" parent="." unique_id=326809953]
+z_index = -5
+position = Vector2(1019, -2049)
+scale = Vector2(9, 9)
+energy = 1.05
+shadow_enabled = true
+shadow_filter = 2
+shadow_filter_smooth = 4.4
+texture = ExtResource("2_fdnlq")
+texture_scale = 3.0
+height = 50.0
+
+[node name="PointLight2D" type="PointLight2D" parent="." unique_id=1248300234]
+z_index = -5
+position = Vector2(-1256, -2088)
+scale = Vector2(3, 3)
+energy = 1.05
+shadow_enabled = true
+shadow_filter = 2
+shadow_filter_smooth = 1.5
+texture = ExtResource("2_fdnlq")
+texture_scale = 11.59
+
+[node name="Room" type="Node2D" parent="." unique_id=1850681659]
+y_sort_enabled = true
+scale = Vector2(3, 3)
+
+[node name="CanvasModulate" type="CanvasModulate" parent="Room" unique_id=1281780261]
+scale = Vector2(0.33333334, 0.33333334)
+color = Color(0.37605828, 0.38012174, 0.2690761, 1)
+
+[node name="DirectionalLight2D" type="DirectionalLight2D" parent="Room" unique_id=9032245]
+visible = false
+z_index = 10
+position = Vector2(-842.66656, -867.3333)
+scale = Vector2(0.33333334, 0.33333334)
+color = Color(0.7505767, 0.6058343, 0.5165301, 1)
+energy = 1.2
+range_z_min = -100
+range_z_max = 100
+shadow_enabled = true
+height = 0.5
+max_distance = 0.0
+
+[node name="floor" type="Sprite2D" parent="Room" unique_id=999213207]
+z_index = -1
+texture = ExtResource("5_344ge")
+
+[node name="wall" type="StaticBody2D" parent="Room" unique_id=1474893205]
+
+[node name="wall" type="Sprite2D" parent="Room/wall" unique_id=1876054679]
+texture = ExtResource("6_ynf5e")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Room/wall" unique_id=1593851452]
+polygon = PackedVector2Array(-1412.5, -793, -1412.5, 572.1, -1411.7, 572.4, -1294.5, 412, -1293.5, 412, -1012.5, 14.599976, -1012.5, 12.599976, -931.5, -95.29999, -931.5, -97.20001, -834.5, -217.29999, -834.5, -219.29999, -702.5, -374.3, -702.5, -376.1, -689.5, -387.1, -689.5, -388, -192.5, -386, -189.69995, -386, -186.69995, -389, -184.5, -389, -187.5, -604, -187.5, -712.7, -187.33334, -725.3334, -9, -722.6667, 24, -722.6667, 27.5, -709, 27.5, -691, 28.5, -691, 29.5, -427, 29.5, -425.8, 27.699951, -424, 25.5, -424, 25.5, -392, 29.5, -389, 29.5, -387, 499.5, -386, 598.9, -386, 929.8999, -151, 931.8999, -151, 1397.8999, 186, 1399.7, 186, 1405.7, 192, 1407.1001, 192, 1410.1001, 200, 1412.5, 200, 1412.5, -793)
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="Room/wall" unique_id=571991369]
+position = Vector2(0, -100)
+occluder = SubResource("OccluderPolygon2D_fdnlq")
+
+[node name="LightOccluder2D2" type="LightOccluder2D" parent="Room/wall" unique_id=865356422]
+position = Vector2(-100, -100)
+occluder = SubResource("OccluderPolygon2D_jkdf5")
+
+[node name="door" type="StaticBody2D" parent="Room" unique_id=1365923699]
+
+[node name="door" type="Sprite2D" parent="Room/door" unique_id=1020633072]
+texture = ExtResource("7_hptm8")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Room/door" unique_id=1713009272]
+polygon = PackedVector2Array(-187.5, -733, -187.5, -731.3, -189.5, -730.2, -189.5, -724.3, -196.5, -721.3, -196.5, -392.2, -193.30005, -389, -189.90002, -389, -188.5, -385.6, -188.5, -381.8, -180.5, -385.8, -180.5, -387, 28, -387, 35, -391, 37.5, -391, 37.5, -720.9, 25.5, -731, 25.5, -733)
+
+[node name="board" type="Sprite2D" parent="Room" unique_id=704519955]
+texture = ExtResource("5_d1ilt")
+
+[node name="paintings2" type="Sprite2D" parent="Room" unique_id=317206860]
+texture = ExtResource("6_6iyac")
+
+[node name="paintings" type="Sprite2D" parent="Room" unique_id=1336194285]
+position = Vector2(-700, 100)
+texture = ExtResource("7_jkdf5")
+
+[node name="cabinet" type="StaticBody2D" parent="Room" unique_id=840329954]
+position = Vector2(309.33334, 298)
+
+[node name="cabinet" type="Sprite2D" parent="Room/cabinet" unique_id=1692271433]
+texture = ExtResource("7_fdnlq")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Room/cabinet" unique_id=1493580671]
+polygon = PackedVector2Array(410.5, -570, 410.5, -301, 703.5, -303, 706.5, -303, 704.5, -567, 704.5, -570)
+
+[node name="book" type="Sprite2D" parent="Room" unique_id=843946296]
+texture = ExtResource("9_wsu2k")
+
+[node name="Player" parent="Room" unique_id=1482744495 instance=ExtResource("3_8gbba")]
+z_index = 1
+position = Vector2(-327.6667, -251.66669)
+speed = 800.0
+
+[node name="skeleton" type="StaticBody2D" parent="Room" unique_id=1323776587]
+z_index = 1
+y_sort_enabled = true
+position = Vector2(-1.6666666, 343.00003)
+
+[node name="skeleton" type="Sprite2D" parent="Room/skeleton" unique_id=563224302]
+y_sort_enabled = true
+texture = ExtResource("10_k12tt")
+offset = Vector2(0, -300)
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Room/skeleton" unique_id=2049117631]
+y_sort_enabled = true
+position = Vector2(-0.66666555, -302)
+polygon = PackedVector2Array(-18.333334, 252, -46.333336, 254.33334, -84.333336, 233.66667, -108, 233.33334, -123, 250, -135, 283, -134, 299, -123.30005, 352, -125.5, 352, -125.5, 360, -118.5, 365, -118.5, 366.59998, -102.69995, 370, -89.099976, 370, -71.5, 363.40002, -41.400024, 363, 44.666668, 356.99997, 104.333336, 353.99997, 157.33333, 352.66666, 175.33333, 332.99997, 178.66667, 306.66666, 181.30005, 283, 174.66667, 272.33334, 167.33334, 266.33334, 150, 257.99997, 126, 273, 99, 266.33334, 83.333336, 257.33334, 67, 236.33334, 44.666668, 232.66667, 2.3333335, 230)
+
+[node name="shelf" type="StaticBody2D" parent="Room" unique_id=937698786]
+z_index = 1
+y_sort_enabled = true
+position = Vector2(-712, 369.3333)
+
+[node name="shelf" type="Sprite2D" parent="Room/shelf" unique_id=33603512]
+position = Vector2(23.333334, -19.33334)
+texture = ExtResource("8_jkdf5")
+offset = Vector2(1050, -300)
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Room/shelf" unique_id=669912597]
+position = Vector2(1074, -304)
+polygon = PackedVector2Array(-1303.6667, 248.66667, -1304.6667, 365.33334, -1236.6667, 376, -1179.6667, 391.33334, -1121, 388.33334, -880.6667, 323.6667, -887, 168)
