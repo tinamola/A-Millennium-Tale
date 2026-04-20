@@ -16,6 +16,7 @@
 [ext_resource type="Texture2D" uid="uid://24p3m0hvhkqg" path="res://Assets/Room2/book.png" id="9_wsu2k"]
 [ext_resource type="Texture2D" uid="uid://bob5e0rkppum7" path="res://Assets/Room2/skeleton.png" id="10_k12tt"]
 [ext_resource type="Shader" uid="uid://b6lyd47t7ja0k" path="res://Scenes/main.gdshader" id="16_k12tt"]
+[ext_resource type="Texture2D" uid="uid://q2f2a2vnvwd0" path="res://Assets/Room2/particle.png" id="17_h1bgf"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_h1bgf"]
 shader = ExtResource("16_k12tt")
@@ -53,6 +54,15 @@ polygon = PackedVector2Array(-1399.3334, -693.3334, -54, -685.6667, -94.66667, -
 
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_jkdf5"]
 polygon = PackedVector2Array(705.6667, -596, 323.33334, -606.6667, -53, -581.6667, -31.666672, -693.3334, 1507, -688.6667, 1508, -438.6667, 1094, -496, 815.3334, -544)
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_b3802"]
+particle_flag_disable_z = true
+emission_shape = 3
+emission_box_extents = Vector3(3000, 500, 1)
+initial_velocity_min = 3.0
+initial_velocity_max = 6.0
+gravity = Vector3(0, 5, 0)
+color = Color(1, 1, 1, 0.7764706)
 
 [node name="Main" type="Node2D" unique_id=1007546812]
 script = ExtResource("1_jjgbg")
@@ -205,3 +215,10 @@ offset = Vector2(1050, -300)
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Room/shelf" unique_id=669912597]
 position = Vector2(1074, -304)
 polygon = PackedVector2Array(-1303.6667, 248.66667, -1304.6667, 365.33334, -1236.6667, 376, -1179.6667, 391.33334, -1121, 388.33334, -880.6667, 323.6667, -887, 168)
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="." unique_id=1838452068]
+z_index = 5
+position = Vector2(-200, -1000)
+amount = 400
+texture = ExtResource("17_h1bgf")
+process_material = SubResource("ParticleProcessMaterial_b3802")
