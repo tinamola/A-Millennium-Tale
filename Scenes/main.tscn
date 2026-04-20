@@ -2,7 +2,9 @@
 
 [ext_resource type="Script" uid="uid://bhsxmbton5pxr" path="res://Scripts/main.gd" id="1_jjgbg"]
 [ext_resource type="Texture2D" uid="uid://c3shqi334cvvf" path="res://Assets/Chars/glow.png" id="2_fdnlq"]
+[ext_resource type="Texture2D" uid="uid://bypqoqe3cd5y0" path="res://Assets/Room2/back.jpg" id="2_wsu2k"]
 [ext_resource type="PackedScene" uid="uid://8dl5x4oy7fmm" path="res://Scenes/player.tscn" id="3_8gbba"]
+[ext_resource type="Texture2D" uid="uid://btbu6157dchpn" path="res://Assets/Room2/windowglow.png" id="3_jkdf5"]
 [ext_resource type="Texture2D" uid="uid://cfb5m2pypprgg" path="res://Assets/Room2/floor.png" id="5_344ge"]
 [ext_resource type="Texture2D" uid="uid://cim4hg2urqgxa" path="res://Assets/Room2/board.png" id="5_d1ilt"]
 [ext_resource type="Texture2D" uid="uid://bw14ggoy2ng3m" path="res://Assets/Room2/painting2.png" id="6_6iyac"]
@@ -13,9 +15,41 @@
 [ext_resource type="Texture2D" uid="uid://cng6ol7llefx2" path="res://Assets/Room2/shelf.png" id="8_jkdf5"]
 [ext_resource type="Texture2D" uid="uid://24p3m0hvhkqg" path="res://Assets/Room2/book.png" id="9_wsu2k"]
 [ext_resource type="Texture2D" uid="uid://bob5e0rkppum7" path="res://Assets/Room2/skeleton.png" id="10_k12tt"]
+[ext_resource type="Shader" uid="uid://b6lyd47t7ja0k" path="res://Scenes/main.gdshader" id="16_k12tt"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_h1bgf"]
+shader = ExtResource("16_k12tt")
+shader_parameter/angle = -0.3
+shader_parameter/position = 0.5
+shader_parameter/spread = 0.5
+shader_parameter/cutoff = 0.1
+shader_parameter/falloff = 0.2
+shader_parameter/edge_fade = 0.15
+shader_parameter/speed = 1.0
+shader_parameter/ray1_density = 8.0
+shader_parameter/ray2_density = 30.0
+shader_parameter/ray1_intensity = 1.0
+shader_parameter/ray2_intensity = 1.0
+shader_parameter/color = Color(0.96798915, 0.9581247, 0.9309244, 0.8)
+
+[sub_resource type="GDScript" id="GDScript_b3802"]
+script/source = "extends ColorRect
+
+
+# Called when the node enters the scene tree for the first time.
+func _ready() -> void:
+	pass # Replace with function body.
+
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta: float) -> void:
+	pass
+"
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_wsu2k"]
 
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_fdnlq"]
-polygon = PackedVector2Array(-1399.3334, -693.3334, -54, -685.6667, -94.66667, -598.3334, -325.33334, -628, -496, -609, -692.3334, -541.6667, -848, -475.33337, -1019.6667, -419.33337, -1172.6667, -382, -1413.3334, -332.33334)
+polygon = PackedVector2Array(-1399.3334, -693.3334, -54, -685.6667, -94.66667, -598.3334, -329.6667, -632, -526.3334, -619, -692.3334, -541.6667, -848, -475.33337, -1019.6667, -419.33337, -1172.6667, -382, -1413.3334, -332.33334)
 
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_jkdf5"]
 polygon = PackedVector2Array(705.6667, -596, 323.33334, -606.6667, -53, -581.6667, -31.666672, -693.3334, 1507, -688.6667, 1508, -438.6667, 1094, -496, 815.3334, -544)
@@ -23,11 +57,17 @@ polygon = PackedVector2Array(705.6667, -596, 323.33334, -606.6667, -53, -581.666
 [node name="Main" type="Node2D" unique_id=1007546812]
 script = ExtResource("1_jjgbg")
 
+[node name="Back" type="Sprite2D" parent="." unique_id=1239515492]
+z_index = -100
+position = Vector2(90, -1094.0001)
+scale = Vector2(4.5007324, 3.8183591)
+texture = ExtResource("2_wsu2k")
+
 [node name="PointLight2D2" type="PointLight2D" parent="." unique_id=326809953]
 z_index = -5
 position = Vector2(1019, -2049)
 scale = Vector2(9, 9)
-energy = 1.05
+energy = 1.2
 shadow_enabled = true
 shadow_filter = 2
 shadow_filter_smooth = 4.4
@@ -37,14 +77,23 @@ height = 50.0
 
 [node name="PointLight2D" type="PointLight2D" parent="." unique_id=1248300234]
 z_index = -5
-position = Vector2(-1256, -2088)
+position = Vector2(-1322, -2145)
 scale = Vector2(3, 3)
-energy = 1.05
+energy = 1.2
 shadow_enabled = true
 shadow_filter = 2
 shadow_filter_smooth = 1.5
 texture = ExtResource("2_fdnlq")
 texture_scale = 11.59
+height = 50.0
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=436879799]
+material = SubResource("ShaderMaterial_h1bgf")
+offset_left = 203.00002
+offset_top = -2014.0001
+offset_right = 1628.0
+offset_bottom = -1375.0
+script = SubResource("GDScript_b3802")
 
 [node name="Room" type="Node2D" parent="." unique_id=1850681659]
 y_sort_enabled = true
@@ -52,7 +101,7 @@ scale = Vector2(3, 3)
 
 [node name="CanvasModulate" type="CanvasModulate" parent="Room" unique_id=1281780261]
 scale = Vector2(0.33333334, 0.33333334)
-color = Color(0.37605828, 0.38012174, 0.2690761, 1)
+color = Color(0.7229706, 0.65924084, 0.51092625, 1)
 
 [node name="DirectionalLight2D" type="DirectionalLight2D" parent="Room" unique_id=9032245]
 visible = false
@@ -66,6 +115,12 @@ range_z_max = 100
 shadow_enabled = true
 height = 0.5
 max_distance = 0.0
+
+[node name="WindowBeam" type="Sprite2D" parent="Room" unique_id=642732184]
+self_modulate = Color(1, 1, 1, 0.7019608)
+z_index = 1
+material = SubResource("CanvasItemMaterial_wsu2k")
+texture = ExtResource("3_jkdf5")
 
 [node name="floor" type="Sprite2D" parent="Room" unique_id=999213207]
 z_index = -1

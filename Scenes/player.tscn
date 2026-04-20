@@ -10,18 +10,6 @@
 atlas = ExtResource("2_6t5aa")
 region = Rect2(863, 80, 200, 500)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_6t5aa"]
-atlas = ExtResource("2_6t5aa")
-region = Rect2(1370, 584, 200, 440)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_vgqql"]
-atlas = ExtResource("2_6t5aa")
-region = Rect2(1570, 584, 200, 440)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_fkybt"]
-atlas = ExtResource("2_6t5aa")
-region = Rect2(1770, 584, 200, 440)
-
 [sub_resource type="AtlasTexture" id="AtlasTexture_tx1dd"]
 atlas = ExtResource("2_6t5aa")
 region = Rect2(0, 70, 292, 500)
@@ -51,15 +39,6 @@ animations = [{
 "frames": [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_cvnsp")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_6t5aa")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_vgqql")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_fkybt")
 }],
 "loop": true,
 "name": &"idle",
@@ -113,6 +92,7 @@ animation = &"idle"
 flip_h = true
 
 [node name="PointLight2D" type="PointLight2D" parent="Visuals" unique_id=1063226719]
+visible = false
 position = Vector2(57, 11)
 energy = 0.8
 shadow_enabled = true
